@@ -1,0 +1,220 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --color-navy: #1d326d;
+    --color-navy-dark: #1a2744;
+    --color-gold: #c79d51;
+    --color-gold-light: #d2b977;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/*
+  Brand palette (application colours):
+  primary   navy  #1d326d  hsl(224, 58%, 27%)   (legacy e-Offering brand)
+  secondary gold  #c79d51  hsl(39, 51%, 55%)
+  tertiary  gray  #717075  hsl(252, 2%, 45%)   -> muted text and neutral accents
+  Tints and dark-mode variants share these hues; dark mode lightens the blue for contrast.
+*/
+:root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(225, 60%, 10%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(225, 60%, 10%);
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(225, 60%, 10%);
+    --primary: hsl(224, 58%, 27%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(39, 51%, 55%);
+    --secondary-foreground: hsl(224, 58%, 14%);
+    --muted: hsl(225, 25%, 96%);
+    --muted-foreground: hsl(252, 2%, 45%);
+    --accent: hsl(225, 60%, 95%);
+    --accent-foreground: hsl(224, 58%, 27%);
+    --destructive: hsl(0, 84.2%, 60.2%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+    --border: hsl(225, 20%, 90%);
+    --input: hsl(225, 16%, 86%);
+    --ring: hsl(224, 58%, 27%);
+    --chart-1: hsl(224, 58%, 27%);
+    --chart-2: hsl(39, 51%, 55%);
+    --chart-3: hsl(225, 60%, 55%);
+    --chart-4: hsl(39, 70%, 72%);
+    --chart-5: hsl(252, 2%, 45%);
+    --radius: 0.5rem;
+    --sidebar-background: hsl(225, 40%, 97%);
+    --sidebar-foreground: hsl(225, 30%, 25%);
+    --sidebar-primary: hsl(224, 58%, 27%);
+    --sidebar-primary-foreground: hsl(0, 0%, 100%);
+    --sidebar-accent: hsl(225, 50%, 92%);
+    --sidebar-accent-foreground: hsl(224, 58%, 27%);
+    --sidebar-border: hsl(225, 25%, 89%);
+    --sidebar-ring: hsl(224, 58%, 27%);
+}
+
+.dark {
+    --background: hsl(225, 35%, 6%);
+    --foreground: hsl(225, 20%, 97%);
+    --card: hsl(225, 35%, 7%);
+    --card-foreground: hsl(225, 20%, 97%);
+    --popover: hsl(225, 35%, 7%);
+    --popover-foreground: hsl(225, 20%, 97%);
+    --primary: hsl(225, 80%, 68%);
+    --primary-foreground: hsl(225, 100%, 10%);
+    --secondary: hsl(39, 60%, 62%);
+    --secondary-foreground: hsl(225, 100%, 10%);
+    --muted: hsl(225, 25%, 11%);
+    --muted-foreground: hsl(252, 4%, 68%);
+    --accent: hsl(225, 40%, 18%);
+    --accent-foreground: hsl(225, 40%, 92%);
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+    --border: hsl(225, 20%, 17%);
+    --input: hsl(225, 20%, 19%);
+    --ring: hsl(225, 80%, 68%);
+    --chart-1: hsl(225, 80%, 68%);
+    --chart-2: hsl(39, 60%, 62%);
+    --chart-3: hsl(225, 60%, 45%);
+    --chart-4: hsl(42, 80%, 65%);
+    --chart-5: hsl(252, 4%, 62%);
+    --sidebar-background: hsl(225, 35%, 8%);
+    --sidebar-foreground: hsl(225, 15%, 80%);
+    --sidebar-primary: hsl(225, 80%, 68%);
+    --sidebar-primary-foreground: hsl(225, 100%, 10%);
+    --sidebar-accent: hsl(225, 30%, 16%);
+    --sidebar-accent-foreground: hsl(225, 20%, 95%);
+    --sidebar-border: hsl(225, 20%, 16%);
+    --sidebar-ring: hsl(225, 80%, 68%);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Rich text produced by the WYSIWYG editor (event descriptions). */
+@layer components {
+    .rich-text {
+        @apply text-sm leading-relaxed;
+    }
+
+    .rich-text > * + * {
+        margin-top: 0.5rem;
+    }
+
+    .rich-text h2 {
+        @apply text-foreground text-lg font-semibold tracking-tight;
+    }
+
+    .rich-text h3 {
+        @apply text-foreground text-base font-semibold;
+    }
+
+    .rich-text ul {
+        @apply list-disc pl-5;
+    }
+
+    .rich-text ol {
+        @apply list-decimal pl-5;
+    }
+
+    .rich-text li + li {
+        margin-top: 0.125rem;
+    }
+
+    .rich-text blockquote {
+        @apply border-border text-muted-foreground border-l-2 pl-3 italic;
+    }
+
+    .rich-text a {
+        @apply text-primary underline underline-offset-4;
+    }
+
+    .rich-text hr {
+        @apply border-border my-3;
+    }
+
+    .rich-text u {
+        text-decoration: underline;
+    }
+
+    .rich-text s {
+        text-decoration: line-through;
+    }
+}
